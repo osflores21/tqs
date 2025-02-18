@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-UltraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-ExtraLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-Normal.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Promo";
+  src: url("../fonts/Promo-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Sniglet */
+@font-face {
+  font-family: "Sniglet";
+  src: url("../fonts/Sniglet-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sniglet";
+  src: url("../fonts/Sniglet-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+body {
+  font-family: "Singlet", sans-serif;
+}
