@@ -1,0 +1,79 @@
+image: node:22.2-alpine3.18
+
+stages:
+  - build
+  - deploy
+  - test
+
+variables:
+  APP_PATH: tqs-frontend
+  VAULT_SECRET_PATH: environments/${CI_PROJECT_PATH}
+  ANSIBLE_HOST_KEY_CHECKING: 'False'
+
+environment:
+  stage: build
+  id_tokens:
+    VAULT_JWT:
+      aud: $VAULT_ADDR
+  before_script:
+    - apk add --no-cache vault libcap jq
+    - setcap cap_ipc_lock= /usr/sbin/vault
+    - export ENVIRONMENT_NAME=development
+    - export VAULT_ENVIRONMENTS_REGEX="^(qa|production)$"
+    - BRANCH_REGEX_QA="^deploy-qa$" && if [[ "$CI_COMMIT_BRANCH" =~ $BRANCH_REGEX_QA ]]; then export ENVIRONMENT_NAME=qa; fi;
+    - BRANCH_REGEX_PRODUCTION="^deploy-production$" && if [[ "$CI_COMMIT_BRANCH" =~ $BRANCH_REGEX_PRODUCTION ]]; then export ENVIRONMENT_NAME=production; fi;
+  script:
+    - |-
+      if [[ $ENVIRONMENT_NAME =~ $VAULT_ENVIRONMENTS_REGEX ]]; then
+        if VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=${VAULT_ROLE} jwt=$VAULT_JWT)"; then
+          export VAULT_TOKEN
+          vault kv get -format=json ${VAULT_SECRET_PATH}/${ENVIRONMENT_NAME} | jq .data.data | jq -r 'to_entries | .[] | "\(.key)=\(.value)"' >> build.env || (echo "Error generating vault environment." && exit 1)
+          echo "ENVIRONMENT_NAME=${ENVIRONMENT_NAME}" >> build.env
+        else
+          echo "Error getting VAULT_TOKEN."
+          exit 1
+        fi
+      fi
+    - echo "ENVIRONMENT_NAME=${ENVIRONMENT_NAME}" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: 1 weeks
+
+build:
+  stage: build
+  needs:
+    - job: environment
+      artifacts: true
+  script:
+    - npm install --force
+    - npm run build
+    - |
+      if [[ $ENVIRONMENT_NAME =~ 'qa' ]]; then
+        cp _headers_qa ./dist/_headers
+      else
+        cp _headers ./dist/_headers
+      fi
+  tags:
+    - build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 weeks
+
+deploy:
+  stage: deploy
+  needs:
+    - job: environment
+      artifacts: true
+    - job: build
+      artifacts: true
+  before_script:
+    - npm install -g wrangler
+  script:
+    - npx wrangler pages deploy ./dist --project-name tqs-frontend --branch $CI_COMMIT_BRANCH --commit-hash $CI_COMMIT_SHA
+  tags:
+    - deploy
+  only:
+    - deploy-qa
+    - deploy-production

@@ -1,0 +1,12 @@
+/*
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; always;
+    X-XSS-Protection: 1; mode=block
+    X-Frame-Options: SAMEORIGIN
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: strict-origin
+    Content-Security-Policy: default-src 'self' http: https: ws: wss: data: blob: 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self';
+    Expect-CT max-age=86400, enforce
+    Cross-Origin-Embedder-Policy: require-corp
+    Cross-Origin-Opener-Policy: same-origin
+    Access-Control-Allow-Origin: https://qa.tqs.mx
+    X-Robots-Tag: noindex, follow
