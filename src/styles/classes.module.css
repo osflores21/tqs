@@ -1,0 +1,28 @@
+.list {
+  position: relative;
+}
+
+.indicator {
+  background-color: #4CC5C4;
+  border-radius: var(--mantine-radius-lg);
+  border: 1px solid var(--mantine-color-gray-2);
+  box-shadow: var(--mantine-shadow-sm);
+}
+
+.tab {
+  z-index: 1;
+  font-weight: 500;
+  transition: color 100ms ease;
+  color: #7F7F7F;
+}
+
+.control {
+  &[data-active] {
+    color: var(--mantine-color-white);
+  }
+}
+
+.markRounded {
+  border-radius: 8px;
+  padding: 2px 4px;
+}

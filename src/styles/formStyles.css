@@ -1,0 +1,130 @@
+
+#hsForm_f5da913e-f34c-4745-ac80-487a1c2c58dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#firstname-f5da913e-f34c-4745-ac80-487a1c2c58dd,
+#lastname-f5da913e-f34c-4745-ac80-487a1c2c58dd,
+#email-f5da913e-f34c-4745-ac80-487a1c2c58dd,
+#address-f5da913e-f34c-4745-ac80-487a1c2c58dd {
+  border-radius: 32px;
+  border: 1px solid #E4E4E4;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 42px;
+}
+
+#label-email-f5da913e-f34c-4745-ac80-487a1c2c58dd,
+#label-firstname-f5da913e-f34c-4745-ac80-487a1c2c58dd,
+#label-lastname-f5da913e-f34c-4745-ac80-487a1c2c58dd,
+#label-address-f5da913e-f34c-4745-ac80-487a1c2c58dd {
+  color: #333;
+  font-weight: bold;
+  font-size: 14px
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#hsForm_f5da913e-f34c-4745-ac80-487a1c2c58dd .hs_submit:nth-child(5) {
+  grid-column: span 2;
+}
+
+
+/*--------------------------------------------------------------------------*/
+
+
+/* Estilo general para el formulario */
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#firstname-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#lastname-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#email-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#phone-fbd1d48d-6b3a-4f01-8e49-b279545b5808 {
+  border-radius: 32px;
+  border: 1px solid #E4E4E4;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 42px;
+}
+
+#label-0-2\/type-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#label-firstname-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#label-lastname-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#label-email-fbd1d48d-6b3a-4f01-8e49-b279545b5808,
+#label-phone-fbd1d48d-6b3a-4f01-8e49-b279545b5808 {
+  color: #333;
+  font-weight: bold;
+  font-size: 14px
+}
+
+
+#label-0-2\/type-fbd1d48d-6b3a-4f01-8e49-b279545b5808 {
+  margin: 4px;
+}
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .inputs-list.multi-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 90%;
+  justify-items: center;
+}
+
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .inputs-list.multi-container li {
+  list-style: none;
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+
+}
+
+.hs-button {
+  background-color: #E61D55;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.hs-button:hover {
+  background-color: #F32866;
+}
+
+
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs-form-field:nth-child(5),
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs-form-field:nth-child(6),
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs-form-field:nth-child(7),
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs-form-field:nth-child(8),
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs_submit:nth-child(6) {
+  grid-column: span 2;
+}
+
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs-form-field:nth-child(5) {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+#hsForm_fbd1d48d-6b3a-4f01-8e49-b279545b5808 .hs-form-field:nth-child(5) label {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
