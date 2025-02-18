@@ -1,4 +1,3 @@
-// src/sections/MainView.tsx
 import { Box, Flex, Image, Text } from '@mantine/core';
 import SocialNetwoks from '../components/SocialNetwoks';
 

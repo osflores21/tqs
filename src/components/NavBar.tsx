@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import { Tabs, FloatingIndicator, Burger, Drawer, Button } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Tabs, FloatingIndicator, Burger, Drawer, Button } from "@mantine/core";
 import classes from "../styles/classes.module.css";
 
 interface NavbarProps {
@@ -12,11 +12,11 @@ const HEADER_HEIGHT = 80;
 
 const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
   const [currentSection, setCurrentSection] = useState(0);
-  const [opened, setOpened] = useState(false); // State for Drawer
+  const [opened, setOpened] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const listRef = useRef<HTMLDivElement | null>(null);
 
-  const matches = useMediaQuery("(max-width: 768px)"); // Check if screen is small
+  const matches = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
@@ -44,12 +44,9 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
 
   return (
     <>
-      {/* Burger menu for mobile */}
       {matches && (
         <Burger size="lg" opened={opened} onClick={() => setOpened((prev) => !prev)} color="red" />
       )}
-
-      {/* Drawer for mobile menu */}
       <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
@@ -60,7 +57,6 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
         withCloseButton={false}
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
       >
-        {/* Mobile Menu List */}
         <div className={classes.list} style={{ display: 'flex', flexDirection: 'column' }}>
           {sections
             .filter((sectionId) => sectionId !== "main")
@@ -73,10 +69,10 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
                   const index = sections.indexOf(sectionId);
                   if (index !== -1) {
                     setCurrentSection(index);
-                    setOpened(false); // Close the drawer after selection
+                    setOpened(false);
                   }
                 }}
-                style={{ marginBottom: '10px' }} // Optional, for spacing
+                style={{ marginBottom: '10px' }}
               >
                 {sectionId === "whoAre"
                   ? "¿Quiénes Somos?"
@@ -90,7 +86,6 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
         </div>
       </Drawer>
 
-      {/* Full desktop menu */}
       {!matches && (
         <Tabs
           value={sections[currentSection]}

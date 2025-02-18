@@ -1,5 +1,5 @@
-import { Text, Flex, Box, Paper, Image, Button, List, Group } from '@mantine/core';
 import { Dispatch, SetStateAction } from 'react';
+import { Text, Flex, Box, Paper, Image, Button, List, Group } from '@mantine/core';
 
 interface Props {
   setActiveSection: Dispatch<SetStateAction<string>>
