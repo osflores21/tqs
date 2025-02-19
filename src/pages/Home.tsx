@@ -5,7 +5,6 @@ import Quote from '../sections/Quote';
 import Products from '../sections/Products';
 import JoinRed from '../sections/JoinRed';
 import Layout from '../components/Layout';
-import Footer from '../components/Footer';
 
 const Home = () => {
   const [, setActiveSection] = useState('main');
