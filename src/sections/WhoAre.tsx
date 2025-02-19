@@ -4,8 +4,8 @@ import classes from "../styles/classes.module.css"
 const WhoAre = () => {
 
   return (
-    <Flex justify={"center"} w={"100%"} align="center" mb={70} bg={"#E2F5F4"} id='whoAre' >
-      <Box w={{ base: "90%", xs: "70%", md: "45%" }} py={45}>
+    <Flex justify={"center"} w={"100%"} align="center" bg={"#E2F5F4"} id='whoAre' py={8} >
+      <Box w={{ base: "90%", xs: "70%", md: "45%" }} py={35}>
         <Paper radius={"xl"} withBorder p={"md"} style={{ borderColor: "#E61D55", borderWidth: 2 }} w={{ base: "100%", md: "75%" }}>
           <Flex justify='center' direction={"column"} align={'center'} gap={10}>
             <Text ta={"center"} lh={"xl"} fz={16}>Brindamos <Mark color='#4CC5C4' c={"#ffff"} className={classes.markRounded}> atención de primer nivel</Mark> para tu salud<br />

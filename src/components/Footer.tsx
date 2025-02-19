@@ -12,7 +12,7 @@ const Footer = () => {
         </Group>
         <Group gap={64} align='center'>
           <Anchor onClick={open} target="_blank" fz={16} c='#ffff'>
-            Términos y Condiciones
+            Términos y Condiciones 2025
           </Anchor>
         </Group>
       </Flex>

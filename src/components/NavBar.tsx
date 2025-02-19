@@ -37,10 +37,10 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: `-${HEADER_HEIGHT}px 0px 0px 0px`,
-      threshold: 1.0,
+      rootMargin: `-80px 0px -10% 0px`,
+      threshold: 0.1,
     };
-
+    
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         const sectionId = entry.target.id;

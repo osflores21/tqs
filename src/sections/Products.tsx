@@ -20,8 +20,8 @@ const Products = ({ setActiveSection }: Props) => {
   };
 
   return (
-    <Flex justify="center" align="center" w="100%" direction="column" mb={60} id="products">
-      <Title w="75%" c="#EF1154" ta={isMobile ? "center" : "left"} fz={{ base: 35, xs: 40 }} my={24}>Productos</Title>
+    <Flex justify="center" align="center" w="100%" direction="column" py={16} id="products" >
+      <Title w="75%" c="#EF1154" ta={isMobile ? "center" : "left"} fz={{ base: 35, xs: 40 }} py={32}>Productos</Title>
       <Flex
         justify="space-between"  // Espacios entre los elementos
         direction={{ base: "column", xs: "row" }}
@@ -30,6 +30,7 @@ const Products = ({ setActiveSection }: Props) => {
         gap="xl"
       >
         <Box
+          visibleFrom='md'
           w={{ base: "100%", xs: "30%" }}
           style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
         >
@@ -37,7 +38,7 @@ const Products = ({ setActiveSection }: Props) => {
         </Box>
 
         <Box
-          w={{ base: "100%", xs: "30%", md: "30%" }}
+          w={{ base: "100%", xs: "50%", md: "30%" }}
           style={{ display: "flex" }}
           pos="relative"
         >
@@ -72,7 +73,7 @@ const Products = ({ setActiveSection }: Props) => {
         </Box>
 
         <Box
-          w={{ base: "100%", xs: "30%", md: "30%" }}
+          w={{ base: "100%", xs: "50%", md: "30%" }}
           style={{ display: "flex" }}
           pos="relative"
         >

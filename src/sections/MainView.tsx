@@ -3,8 +3,8 @@ import SocialNetwoks from '../components/SocialNetwoks';
 
 const MainView = () => {
   return (
-    <Flex direction="column" justify={"center"} align="center" w={"100%"} mb={40} id='main'>
-      <Flex justify={"center"} w={"100%"} mt={35}>
+    <Flex direction="column" justify={"center"} align="center" w={"100%"} id='main'>
+      <Flex justify={"center"} w={"100%"}>
         <Box w={{base:"100%", xs:"40%"}}>
           <Flex justify="center" direction={"column"} align={"center"} gap={10}>
             <Image src={"/logo_TQS.svg"} w={200} fit="contain" />
@@ -23,7 +23,7 @@ const MainView = () => {
           </Flex>
         </Box>
       </Flex>
-      <Box w={{base:"95%", xs:"80%"}} mt={"lg"}>
+      <Box w={{base:"95%", xs:"80%"}} my={"lg"}>
         <SocialNetwoks />
       </Box>
     </Flex>

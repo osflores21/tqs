@@ -43,6 +43,7 @@ const Quote = () => {
         },
       });
       setSuccess(true);
+      form.reset()
     } catch (error) {
       setError("Hubo un error al enviar tus datos.");
     } finally {
@@ -59,7 +60,7 @@ const Quote = () => {
   };
 
   return (
-    <Flex justify={"center"} w={"100%"} bg={"#EF1154"} pos={"relative"} mb={40} id='quote'>
+    <Flex justify={"center"} w={"100%"} bg={"#EF1154"} pos={"relative"} id='quote' py={8}>
       <Box w={"25%"} my={20} visibleFrom="md">
         <Flex justify="center" direction={"column"} align={'center'}>
           <Image src={"./image_telefono.svg"} w={230} fit="contain" />
@@ -68,7 +69,7 @@ const Quote = () => {
       <Box w={{ base: "90%", md: "35%" }} my={20} pos={"relative"}>
         <Title c="#ffff" fz={{ base: 35, xs: 40 }}>Contáctanos</Title>
         <Text c={"#ffff"} fz={16} mb={"xs"}>Ingresa tus datos y nos pondremos en contacto contigo.</Text>
-        <Box pos="absolute" top={360} right={-30} visibleFrom='xs'>
+        <Box pos="absolute" top={360} right={{xs:-30, md:-70}} visibleFrom='xs'>
           <Image src="/image_mensaje.svg" w={120} h="auto" />
         </Box>
         <Paper>
