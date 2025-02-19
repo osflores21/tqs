@@ -37,7 +37,7 @@ const Header = ({ setActiveSection }: Props) => {
       <Flex w={"90%"} justify={"space-between"}>
         <Group gap={64} align="center">
           <Image
-            src={"/logo_TQS.svg"}
+            src={"/logo_TQS.png"}
             w={80}
             fit="contain"
             style={{ cursor: "pointer" }}
