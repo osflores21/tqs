@@ -23,7 +23,7 @@ const MainView = () => {
           </Flex>
         </Box>
       </Flex>
-      <Box w={{base:"100%", xs:"85%"}} mt={"lg"}>
+      <Box w={{base:"95%", xs:"80%"}} mt={"lg"}>
         <SocialNetwoks />
       </Box>
     </Flex>

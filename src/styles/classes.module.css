@@ -11,12 +11,15 @@
 
 .tab {
   z-index: 1;
-  font-weight: 500;
   transition: color 100ms ease;
-  color: #7F7F7F;
 }
 
 .control {
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  color: #7F7F7F;
+
   &[data-active] {
     color: var(--mantine-color-white);
   }

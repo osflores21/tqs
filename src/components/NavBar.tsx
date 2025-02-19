@@ -15,32 +15,58 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
   const [opened, setOpened] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const listRef = useRef<HTMLDivElement | null>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const matches = useMediaQuery("(max-width: 768px)");
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      setIsScrolling(true);
+      window.scrollTo({
+        top: section.offsetTop - HEADER_HEIGHT,
+        behavior: "smooth",
+      });
+
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 500);
+    }
+  };
+
   useEffect(() => {
-    const handleScroll = (event: WheelEvent) => {
-      if (event.deltaY > 0) {
-        setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
-      } else {
-        setCurrentSection((prev) => Math.max(prev - 1, 0));
-      }
+    const observerOptions = {
+      root: null,
+      rootMargin: `-${HEADER_HEIGHT}px 0px 0px 0px`,
+      threshold: 1.0,
     };
-    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        const sectionId = entry.target.id;
+        if (entry.isIntersecting && !isScrolling) {
+          const index = sections.indexOf(sectionId);
+          if (index !== -1) {
+            setCurrentSection(index);
+            setActiveSection(sectionId);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        observer.observe(section);
+      }
+    });
 
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      observer.disconnect();
     };
-  }, []);
-
-  useEffect(() => {
-    const section = document.getElementById(sections[currentSection]);
-    if (section) {
-      const yOffset = section.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
-      window.scrollTo({ top: yOffset, behavior: "smooth" });
-      setActiveSection(sections[currentSection]);
-    }
-  }, [currentSection]);
+  }, [sections, setActiveSection, isScrolling]);
 
   return (
     <>
@@ -71,16 +97,18 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
                     setCurrentSection(index);
                     setOpened(false);
                   }
+                  setCurrentSection(sections.indexOf(sectionId));
+                  scrollToSection(sectionId);
                 }}
                 style={{ marginBottom: '10px' }}
               >
                 {sectionId === "whoAre"
                   ? "¿Quiénes Somos?"
                   : sectionId === "products"
-                  ? "Productos"
-                  : sectionId === "quote"
-                  ? "Cotiza tu plan"
-                  : "Únete a la Red"}
+                    ? "Productos"
+                    : sectionId === "quote"
+                      ? "Cotiza tu plan"
+                      : "Únete a la Red"}
               </Button>
             ))}
         </div>
@@ -113,14 +141,18 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
                   ref={(el) => {
                     tabRefs.current[sectionId] = el;
                   }}
+                  onClick={() => {
+                    setCurrentSection(sections.indexOf(sectionId)); // Actualizar sección activa
+                    scrollToSection(sectionId); // Desplazar hacia la sección
+                  }}
                 >
                   {sectionId === "whoAre"
                     ? "¿Quiénes Somos?"
                     : sectionId === "products"
-                    ? "Productos"
-                    : sectionId === "quote"
-                      ? "Cotiza tu plan"
-                      : "Únete a la Red"}
+                      ? "Productos"
+                      : sectionId === "quote"
+                        ? "Cotiza tu plan"
+                        : "Únete a la Red"}
                 </Tabs.Tab>
               ))}
           </Tabs.List>
