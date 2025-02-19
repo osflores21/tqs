@@ -3,7 +3,7 @@ import SocialNetwoks from '../components/SocialNetwoks';
 
 const MainView = () => {
   return (
-    <Flex direction="column" justify={"center"} align="center" w={"100%"} id='main'>
+    <Flex direction="column" justify={"center"} align="center" w={"100%"} id='main' mb={45}>
       <Flex justify={"center"} w={"100%"}>
         <Box w={{base:"100%", xs:"40%"}}>
           <Flex justify="center" direction={"column"} align={"center"} gap={10}>
