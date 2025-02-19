@@ -1,7 +1,7 @@
+import { Dispatch, SetStateAction } from "react";
 import { Container } from "@mantine/core";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Dispatch, SetStateAction } from "react";
 
 interface Props {
   children?: React.ReactNode;
