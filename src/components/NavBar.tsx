@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
       rootMargin: `-80px 0px -10% 0px`,
       threshold: 0.1,
     };
-    
+
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         const sectionId = entry.target.id;
@@ -83,35 +83,34 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveSection }) => {
         withCloseButton={false}
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
       >
-        <div className={classes.list} style={{ display: 'flex', flexDirection: 'column' }}>
-          {sections
-            .filter((sectionId) => sectionId !== "main")
-            .map((sectionId) => (
-              <Button
-                key={sectionId}
-                variant="subtle"
-                color="dark"
-                onClick={() => {
-                  const index = sections.indexOf(sectionId);
-                  if (index !== -1) {
-                    setCurrentSection(index);
-                    setOpened(false);
-                  }
-                  setCurrentSection(sections.indexOf(sectionId));
-                  scrollToSection(sectionId);
-                }}
-                style={{ marginBottom: '10px' }}
-              >
-                {sectionId === "whoAre"
-                  ? "¿Quiénes Somos?"
-                  : sectionId === "products"
-                    ? "Productos"
-                    : sectionId === "quote"
-                      ? "Cotiza tu plan"
-                      : "Únete a la Red"}
-              </Button>
-            ))}
-        </div>
+        {sections
+          .filter((sectionId) => sectionId !== "main")
+          .map((sectionId) => (
+            <Button
+              w={"100%"}
+              key={sectionId}
+              variant="subtle"
+              color="dark"
+              onClick={() => {
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                  setCurrentSection(index);
+                  setOpened(false);
+                }
+                setCurrentSection(sections.indexOf(sectionId));
+                scrollToSection(sectionId);
+              }}
+              style={{ marginBottom: '10px' }}
+            >
+              {sectionId === "whoAre"
+                ? "¿Quiénes Somos?"
+                : sectionId === "products"
+                  ? "Productos"
+                  : sectionId === "quote"
+                    ? "Cotiza tu plan"
+                    : "Únete a la Red"}
+            </Button>
+          ))}
       </Drawer>
 
       {!matches && (
